@@ -53,9 +53,10 @@ describe('ReviewInput Component', () => {
     let form = wrapper.find(Restaurant).find('form');
 
     input.simulate('change', { target: { value: 'Better Ingredients' } });
+    // console.log(form.debug());
     form.simulate('submit',  { preventDefault() {} });
 
-    wrapper.update()
+    wrapper.update();
 
     expect(wrapper.find(Review).html()).to.include('Better Ingredients')
   });
@@ -83,7 +84,7 @@ describe('ReviewInput Component', () => {
 
     let review = wrapper.find(ReviewInput);
 
-    expect(review.props().restaurantId).to.equal(store.getState().restaurants[0].id);
+    expect(review.props().restaurant.id).to.equal(store.getState().restaurants[0].id);
   });
 
   it('associates the review with the restaurant with a foreign key on the review', () => {
